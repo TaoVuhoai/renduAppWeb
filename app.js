@@ -25,19 +25,7 @@ app.use(session({
 
 }));
 
-//Add headers for Ionic
-app.use(function(req, res, next){
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-    //Request methods you wish to allow
-    res.setHeader("Access-Control-Allow-Methods", "POST");
-
-    //Request headers you wish to allow
-    res.setHeader("Access-Control-Allow-Headers", "X-requested-with,content-type");
-
-    next();
-});
 app.post('/addList', function(req, res) {
 	if(!req.body.name)
 	{
