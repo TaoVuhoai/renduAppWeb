@@ -63,7 +63,7 @@ module.exports =
 			done : task.done
 		};
 		console.log(taskToAdd);
-		modeleTask.findOneAndUpdate(id_list,{$push:{task:taskToAdd}},function(error,task){
+		modeleTask.findOneAndUpdate({_id : id_list},{$push:{task:taskToAdd}},function(error,task){
 			if(error){   
                 cb(false);
             }

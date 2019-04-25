@@ -1,6 +1,5 @@
 const express = require('express');
 const session =require("express-session");
-const cool = require('cool-ascii-faces')
 var path = require('path');
 var uuidv4 = require("uuid/v4");
 
@@ -10,7 +9,8 @@ var dataLayer= require("./Serveur/dataLayer.js");
 var userLayer= require("./Serveur/userLayer.js");
 
 var app=express();
-var  port = process.env.PORT || 3000;
+var  port = process.env.PORT || 8080;
+var ip = "0.0.0.0";
 
 app.use(bodyParser.json() );
 app.use(bodyParser.urlencoded({extended: true }));
@@ -24,19 +24,7 @@ app.use(session({
 
 }));
 
-//Add headers for Ionic
-app.use(function(req, res, next){
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-    //Request methods you wish to allow
-    res.setHeader("Access-Control-Allow-Methods", "POST");
-
-    //Request headers you wish to allow
-    res.setHeader("Access-Control-Allow-Headers", "X-requested-with,content-type");
-
-    next();
-});
 app.post('/addList', function(req, res) {
 	if(!req.body.name)
 	{
@@ -174,7 +162,7 @@ app.post('/addUser', function(req, res) {
 
 
 console.log("Le serveur est lancé sur le port " + port );
-app.listen(port);
-/*app.listen(port , function(){
-    console.log("Example app listening on port: "+ port)
-});*/
+app.listen(port, ip, function() {
+	console.log("listening on " + ip + ":" + port)
+});
+
