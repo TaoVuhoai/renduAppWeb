@@ -1,4 +1,19 @@
-#list{
-	border-style: solid;
-	border-width: 5px;
+.list{
+	border: 2px solid black;
+    border-radius: 5px;
+}
+#nomListe{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px; /* largeur obligatoire pour être centré */
+}
+
+.taskList{
+
+}
+.addTask{
+    margin-bottom: 10px;
+}
+.addList{
+    margin-top: 10px;
 }
