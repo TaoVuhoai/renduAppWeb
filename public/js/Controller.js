@@ -35,7 +35,7 @@ TaskApp.controller('Ctrl',['$scope', '$http', 'Service', function($scope, $http,
 	$scope.addTask = function(username, id_list)
 	{
 		var object = new Object();
-		object.name = document.getElementById("taskName").value;
+		object.name = document.getElementById(id_list).value;
 		object.username=username;
 
 		Service.addTask(object.name, username,id_list,function(res){
