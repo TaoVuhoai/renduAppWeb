@@ -19,10 +19,11 @@
 
 
 
-        <div ng-repeat="list in listSet" Class = "list" >         
-            <span> Ceci est la list {{list.name}}</span>
+        <div ng-repeat="list in listSet" class="list">         
+            <div id="nomListe"> Ceci est la liste {{list.name}}<br>
             <button type="button" ng-click="deleteList(list._id)" > Supprimer la liste complète </button>
-
+            </div>
+            <div class="taskList">
                 <ul>
                     <li ng-repeat="task in list.task">
                         <span> {{task.name}}</span>
@@ -34,15 +35,16 @@
                         </form>
                     </li>
                 </ul>
-                <div>
+            </div>
+                <div class="addTask">
                     <form ng-submit="addTask(user.username,list._id)">
                     <span>Entrez une tache à ajouter</span>
-                    <input type="text" id= "taskName" value=""  ng-model="taskName">
+                    <input type="text" id= {{list._id}} value=""  ng-model="taskName">
                         <button type="submit">Ajouter tâche </button>
                     </form>
                 </div>
         </div>
-        <div>
+        <div class="addList">
                 <form ng-submit="addList(user.username)">
                 <span>Entrez le nom de la liste à ajouter </span>
                 <input type="text" value=""  ng-model="listName">
