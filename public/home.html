@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr" ng-app="MyApp">
+    <head>
+        <meta charset="utf-8">
+        <title>DemoApi</title>
+        <script src="js/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="js/Controller.js"></script>
+        <script src="js/service.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+    </head>
+    <body ng-controller="Ctrl" >
+
+
+        <span > Bienvenue {{user.username}} </span>
+        <button type="button" ng-click="disconnect()" > Se deconnecter </button>
+
+
+
+
+        <div ng-repeat="list in listSet">         
+            <span> Ceci est la list {{list.name}}</span>
+            <button type="button" ng-click="deleteList(list._id)" > Supprimer la liste complète </button>
+
+                <ul>
+                    <li ng-repeat="task in list.task">
+                        <span> {{task.name}}</span>
+                        <form ng-submit="modifTask(list._id,task._id,user.username)">   
+                            <input type="text" name="modif" id={{task._id}}>
+                            <button type="submit"> modifier </button>
+                            <button type="button" ng-click="deleteTask(list._id,task._id)" > supprimer </button>
+                            <INPUT type="checkbox" id={{task._id}}check ng-click="Taskdone(list._id,task)" name="nom" value="valeur attachée au bouton">
+                        </form>
+                    </li>
+                </ul>
+                <div>
+                    <form ng-submit="addTask(user.username,list._id)">
+                    <span>Entrez une tache à ajouter</span>
+                    <input type="text" id= "taskName" value=""  ng-model="taskName">
+                        <button type="submit">Ajouter tâche </button>
+                    </form>
+                </div>
+        </div>
+        <div>
+                <form ng-submit="addList(user.username)">
+                <span>Entrez le nom de la liste à ajouter </span>
+                <input type="text" value=""  ng-model="listName">
+                    <button type="submit">Ajouter Liste </button>
+                </form>
+            </div>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+#tache:hover {
+	cursor: pointer;
+}
+
+.barrer{
+	text-decoration:line-through;
+}
+/*.surligner{
+	background-color: yellow;
+}*/
