@@ -1,6 +1,5 @@
 const express = require('express');
 const session =require("express-session");
-const cool = require('cool-ascii-faces')
 var path = require('path');
 var uuidv4 = require("uuid/v4");
 
